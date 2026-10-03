@@ -1,0 +1,13 @@
+{
+  "name": "aquasage-ai-no-iot",
+  "version": "1.0.0",
+  "description": "AquaSage AI - software-only smart rainwater harvesting and water budgeting platform",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

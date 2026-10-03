@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AquaSage AI - Smart Water Management</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>💧 AquaSage AI</h1>
+      <p>Solar-powered intelligent rainwater harvesting & smart water budgeting</p>
+    </div>
+    <span class="badge">SOFTWARE-ONLY • NO IoT</span>
+  </header>
+
+  <nav class="nav">
+    <button class="nav-btn active" data-target="dashboard">Dashboard</button>
+    <button class="nav-btn" data-target="budget">Water Budget</button>
+    <button class="nav-btn" data-target="irrigation">Irrigation</button>
+    <button class="nav-btn" data-target="analytics">Analytics</button>
+    <button class="nav-btn" data-target="settings">Farm Data</button>
+  </nav>
+
+  <main>
+    <section id="dashboard" class="page active">
+      <div class="hero">
+        <div>
+          <h2>AI Water Management Dashboard</h2>
+          <p>Enter or simulate farm conditions. AquaSage AI calculates irrigation and water-saving decisions without physical IoT hardware.</p>
+        </div>
+        <button class="primary" onclick="refresh()">Refresh AI Analysis</button>
+      </div>
+
+      <div class="cards">
+        <div class="card"><span>Tank Water</span><strong id="tank">--</strong><small id="tankPct">--</small></div>
+        <div class="card"><span>Soil Moisture</span><strong id="soil">--</strong><small>Manual input</small></div>
+        <div class="card"><span>Rain Forecast</span><strong id="rain">--</strong><small>Manual forecast</small></div>
+        <div class="card"><span>Solar Availability</span><strong id="solar">--</strong><small>Software input</small></div>
+      </div>
+
+      <div class="grid two">
+        <div class="panel">
+          <h3>🤖 AI Decision</h3>
+          <div class="decision" id="decision">Loading...</div>
+          <div class="stats">
+            <p><b>Daily crop need:</b> <span id="dailyNeed">--</span></p>
+            <p><b>Recommended irrigation:</b> <span id="recommend">--</span></p>
+            <p><b>Water available for 7-day budget:</b> <span id="budget7">--</span></p>
+            <p><b>Estimated tank duration:</b> <span id="tankDays">--</span></p>
+            <p><b>Drought risk:</b> <span id="risk">--</span></p>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3>⚠️ Alerts & Recommendations</h3>
+          <div id="alerts"></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>🧠 How the AI Decision Works</h3>
+        <div class="explain" id="explanation"></div>
+      </div>
+    </section>
+
+    <section id="budget" class="page">
+      <div class="hero"><div><h2>Smart Water Budget</h2><p>Estimate crop water demand and remaining reserve.</p></div></div>
+      <div class="cards">
+        <div class="card"><span>Crop</span><strong id="budgetCrop">--</strong></div>
+        <div class="card"><span>Daily Requirement</span><strong id="budgetDaily">--</strong></div>
+        <div class="card"><span>7-Day Reserve</span><strong id="budgetReserve">--</strong></div>
+        <div class="card"><span>Tank Duration</span><strong id="budgetDays">--</strong></div>
+      </div>
+      <div class="panel">
+        <h3>Water Budget Formula</h3>
+        <p class="formula">7-day reserve = current tank water − (estimated daily crop requirement × 7)</p>
+        <p>This is a decision-support estimate. Actual crop water needs depend on crop variety, soil, climate and farming practice.</p>
+      </div>
+    </section>
+
+    <section id="irrigation" class="page">
+      <div class="hero"><div><h2>Automatic Irrigation Simulator</h2><p>No physical pump is connected. This simulates the software decision and deducts water from the virtual tank.</p></div></div>
+      <div class="panel">
+        <h3>Recommended Action</h3>
+        <p id="irrigationAction">--</p>
+        <div class="form-row">
+          <label>Water to use (L)
+            <input id="irrigationAmount" type="number" min="0" />
+          </label>
+          <button class="primary" onclick="runIrrigation()">Run Virtual Irrigation</button>
+        </div>
+        <div id="irrigationMessage"></div>
+      </div>
+      <div class="panel">
+        <h3>Rainwater Harvesting Simulator</h3>
+        <p>Enter rainfall to calculate approximate harvested water from the roof.</p>
+        <div class="form-row">
+          <label>Rainfall (mm)
+            <input id="rainAmount" type="number" min="0" value="10" />
+          </label>
+          <button class="primary" onclick="simulateRain()">Simulate Rainfall</button>
+        </div>
+        <div id="rainMessage"></div>
+      </div>
+    </section>
+
+    <section id="analytics" class="page">
+      <div class="hero"><div><h2>Analytics</h2><p>Recent software-generated farm records.</p></div></div>
+      <div class="panel">
+        <table>
+          <thead><tr><th>Date</th><th>Tank (L)</th><th>Soil %</th><th>Forecast (mm)</th><th>Irrigation (L)</th></tr></thead>
+          <tbody id="history"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="settings" class="page">
+      <div class="hero"><div><h2>Farm Data</h2><p>These values replace physical sensor readings in the no-IoT version.</p></div></div>
+      <form class="panel form-grid" id="farmForm">
+        <label>Farm name<input name="name" /></label>
+        <label>Farm area (acres)<input name="area" type="number" step="0.1" /></label>
+        <label>Roof area (m²)<input name="roofArea" type="number" /></label>
+        <label>Tank capacity (L)<input name="tankCapacity" type="number" /></label>
+        <label>Tank level (L)<input name="tankLevel" type="number" /></label>
+        <label>Soil moisture (%)<input name="soilMoisture" type="number" min="0" max="100" /></label>
+        <label>Rainfall last 7 days (mm)<input name="rainfallLast7Days" type="number" /></label>
+        <label>Rainfall forecast (mm)<input name="rainfallForecast" type="number" /></label>
+        <label>Solar availability (%)<input name="solarAvailable" type="number" min="0" max="100" /></label>
+        <label>Crop
+          <select name="crop">
+            <option>Tomato</option><option>Chilli</option><option>Paddy</option>
+            <option>Wheat</option><option>Maize</option><option>Groundnut</option><option>Sugarcane</option>
+          </select>
+        </label>
+        <label>Growth stage
+          <select name="growthStage">
+            <option>Seedling</option><option>Vegetative</option><option>Flowering</option>
+            <option>Fruiting</option><option>Maturity</option>
+          </select>
+        </label>
+        <div class="form-actions">
+          <button class="primary" type="submit">Save Farm Data & Analyze</button>
+          <button class="danger" type="button" onclick="resetDemo()">Reset Demo</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer>AquaSage AI • AI + Rainwater Harvesting + Water Budgeting • No IoT hardware required</footer>
+  <script src="app.js"></script>
+</body>
+</html>

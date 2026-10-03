@@ -1,0 +1,129 @@
+{
+  "farm": {
+    "name": "Demo Farm",
+    "area": 2.9,
+    "roofArea": 185,
+    "tankCapacity": 2500,
+    "tankLevel": 2500,
+    "soilMoisture": 49,
+    "rainfallLast7Days": 31,
+    "rainfallForecast": 19,
+    "solarAvailable": 79,
+    "crop": "Chilli",
+    "growthStage": "Maturity"
+  },
+  "history": [
+    {
+      "date": "2026-10-03T01:41:43.794Z",
+      "tankLevel": 14200,
+      "soilMoisture": 48,
+      "rainfallForecast": 18,
+      "irrigationUsed": 300
+    },
+    {
+      "date": "2026-10-03T01:41:50.845Z",
+      "tankLevel": 14174,
+      "soilMoisture": 48,
+      "rainfallForecast": 18,
+      "irrigationUsed": 26
+    },
+    {
+      "date": "2026-10-03T01:42:06.371Z",
+      "tankLevel": 15294,
+      "soilMoisture": 48,
+      "rainfallForecast": 18,
+      "irrigationUsed": 32
+    },
+    {
+      "date": "2026-10-03T01:42:10.152Z",
+      "tankLevel": 15270,
+      "soilMoisture": 48,
+      "rainfallForecast": 18,
+      "irrigationUsed": 24
+    },
+    {
+      "date": "2026-10-03T01:42:10.671Z",
+      "tankLevel": 15243,
+      "soilMoisture": 48,
+      "rainfallForecast": 18,
+      "irrigationUsed": 27
+    },
+    {
+      "date": "2026-10-03T01:42:10.846Z",
+      "tankLevel": 15216,
+      "soilMoisture": 48,
+      "rainfallForecast": 18,
+      "irrigationUsed": 27
+    },
+    {
+      "date": "2026-10-03T01:42:11.034Z",
+      "tankLevel": 15189,
+      "soilMoisture": 48,
+      "rainfallForecast": 18,
+      "irrigationUsed": 27
+    },
+    {
+      "date": "2026-10-03T01:42:11.354Z",
+      "tankLevel": 15162,
+      "soilMoisture": 48,
+      "rainfallForecast": 18,
+      "irrigationUsed": 27
+    },
+    {
+      "date": "2026-10-03T01:42:12.055Z",
+      "tankLevel": 15135,
+      "soilMoisture": 48,
+      "rainfallForecast": 18,
+      "irrigationUsed": 27
+    },
+    {
+      "date": "2026-10-03T01:42:12.263Z",
+      "tankLevel": 15108,
+      "soilMoisture": 48,
+      "rainfallForecast": 18,
+      "irrigationUsed": 27
+    },
+    {
+      "date": "2026-10-03T01:42:12.497Z",
+      "tankLevel": 15081,
+      "soilMoisture": 48,
+      "rainfallForecast": 18,
+      "irrigationUsed": 27
+    },
+    {
+      "date": "2026-10-03T01:42:12.746Z",
+      "tankLevel": 15054,
+      "soilMoisture": 48,
+      "rainfallForecast": 18,
+      "irrigationUsed": 27
+    },
+    {
+      "date": "2026-10-03T01:42:13.018Z",
+      "tankLevel": 15027,
+      "soilMoisture": 48,
+      "rainfallForecast": 18,
+      "irrigationUsed": 27
+    },
+    {
+      "date": "2026-10-03T01:42:13.257Z",
+      "tankLevel": 15000,
+      "soilMoisture": 48,
+      "rainfallForecast": 18,
+      "irrigationUsed": 27
+    },
+    {
+      "date": "2026-10-03T01:43:20.068Z",
+      "tankLevel": 2500,
+      "soilMoisture": 49,
+      "rainfallForecast": 19,
+      "recommendedIrrigation": 19
+    },
+    {
+      "date": "2026-10-03T01:43:44.071Z",
+      "tankLevel": 2480,
+      "soilMoisture": 49,
+      "rainfallForecast": 19,
+      "irrigationUsed": 20
+    }
+  ]
+}
